@@ -1,0 +1,2 @@
+appSetting.Developmet - ok
+appSettting - ok
