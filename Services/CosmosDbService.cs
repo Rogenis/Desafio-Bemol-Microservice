@@ -1,17 +1,17 @@
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Microservice.Services
 {
     public class CosmosDbService
     {
-        private readonly string _cosmosDbConnectionString;
-        private CosmosClient _cosmosClient;
+        private readonly CosmosClient _cosmosClient;
 
         public CosmosDbService(IConfiguration configuration)
         {
-            _cosmosDbConnectionString = configuration.GetConnectionString("CosmosDBConnection");
-            _cosmosClient = new CosmosClient(_cosmosDbConnectionString);
+            string connectionString = configuration.GetConnectionString("CosmosDBConnection");
+            _cosmosClient = new CosmosClient(connectionString);
         }
 
         public Container GetContainer(string databaseName, string containerName)
