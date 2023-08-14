@@ -6,7 +6,7 @@ using System;
 
 namespace Microservice.Repositories
 {
-    public class CosmosDbRepository<TDto> where TDto : IDto, new()
+   public class CosmosDbRepository<TDto> where TDto : IDto, new()
     {
         private readonly Container _container;
 
