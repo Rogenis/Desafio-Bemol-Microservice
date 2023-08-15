@@ -1,15 +1,7 @@
 
 
-Implementar Filtros: Implemente os filtros de autorização, exceção e ação conforme mencionado inicialmente. Esses filtros ajudarão a gerenciar aspectos como autorização de acesso, tratamento de exceções e execução de lógica adicional antes e após a execução das ações nos controladores.
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 5.0.13
 
-**** Integrar com o Azure Cosmos DB: Use o SDK do Azure Cosmos DB para persistir os objetos no banco de dados não relacional. Você pode criar um repositório (usando o padrão Repository) para abstrair o acesso ao banco de dados e implementar métodos para criar, atualizar, ler e excluir objetos.
-
-Configurar e Enviar Mensagens para a Fila do Azure Service Bus: Você já começou a implementar o envio de mensagens para a fila do Azure Service Bus. Continue trabalhando nisso e certifique-se de lidar com possíveis erros e exceções que possam ocorrer durante o processo de envio.
-
-Testar e Depurar: À medida que você implementa novas funcionalidades, é importante testar e depurar seu microserviço para garantir que tudo esteja funcionando conforme o esperado. Execute testes unitários e de integração para validar o comportamento do seu código.
-
-Documentação e Documentação da API: À medida que seu microserviço cresce, é importante documentar suas APIs para que outros desenvolvedores possam entender como interagir com seu serviço. Você pode usar ferramentas como Swagger para gerar documentação automaticamente.
-
-Configuração e Implantação: Configure as opções de configuração do seu microserviço (por exemplo, usando arquivos appsettings.json) e prepare-se para a implantação. Você pode implantar seu microserviço no Azure usando serviços como o Azure App Service.
-
-Monitoramento e Logging: Implemente mecanismos de monitoramento e logging para acompanhar o desempenho e identificar problemas em produção.
+  SecurityToken validatedToken = null;
+                    var principal = await Task.Run(() => tokenHandler.ValidateToken(token, tokenValidationParameters, out validatedToken));
+                    Console.WriteLine($"Token validated: {validatedToken}");

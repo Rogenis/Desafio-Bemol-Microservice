@@ -15,6 +15,7 @@
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Azure.Core.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Azure.Core.Amqp.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Azure.Messaging.ServiceBus.dll
+/home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.Azure.Amqp.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.Azure.Cosmos.Client.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.Azure.Cosmos.Core.dll
@@ -28,6 +29,8 @@
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Microsoft.Win32.SystemEvents.dll
 /home/rogenis/Desktop/MeuMicroservico/bin/Debug/net5.0/Newtonsoft.Json.dll
