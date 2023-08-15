@@ -1,6 +1,5 @@
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Microservice.Services
 {

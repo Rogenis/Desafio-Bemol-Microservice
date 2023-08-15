@@ -1,43 +1,26 @@
 using Microsoft.Azure.ServiceBus;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using System;
+using Microsoft.Extensions.Options;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Microservice.DTOs;
 
 namespace Microservice.Services
 {
-    public class ServiceBusQueue : IAsyncDisposable
+    public class ServiceBusQueue
     {
-        private readonly string _serviceBusConnectionString;
-        private readonly string _queueName;
-        private QueueClient _queueClient;
+        private readonly QueueClient _queueClient;
 
-        public ServiceBusQueue(IConfiguration configuration)
+        public ServiceBusQueue(IOptions<ServiceBusQueueSettings> settings)
         {
-            _serviceBusConnectionString = configuration.GetConnectionString("ServiceBusConnection");
-            _queueName = "MyQueue";
-            _queueClient = new QueueClient(_serviceBusConnectionString, _queueName);
+            _queueClient = new QueueClient(settings.Value.ConnectionString, settings.Value.QueueName);
         }
 
-        public async Task SendMessageAsync(MyDto myDto)
+        public async Task SendMessageAsync(MyDto dto)
         {
-            string serializedDto = JsonConvert.SerializeObject(myDto);
-            byte[] messageBody = Encoding.UTF8.GetBytes(serializedDto);
-
-            var message = new Message(messageBody);
-
+            var messageBody = JsonConvert.SerializeObject(dto);
+            var message = new Message(Encoding.UTF8.GetBytes(messageBody));
             await _queueClient.SendAsync(message);
-        }
-
-        public async ValueTask DisposeAsync()
-        {
-            if (_queueClient != null)
-            {
-                await _queueClient.CloseAsync();
-                _queueClient = null;
-            }
         }
     }
 }
