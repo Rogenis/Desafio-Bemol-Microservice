@@ -21,14 +21,29 @@ namespace Microservice
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configurações de conexão para o Cosmos DB e Service Bus
+            services.Configure<ServiceBusQueueSettings>(Configuration.GetSection("ServiceBusQueueSettings"));
+
+            // Serviços
             services.AddScoped<CosmosDbService>();
-            // Configuração do Service Bus
             services.AddScoped<ServiceBusQueue>();
 
-            // Configuração do Cosmos DB
-            services.AddSingleton<CosmosClient>(InitializeCosmosClient);
-            services.AddScoped(typeof(CosmosDbRepository<>));
+            // Registro do CosmosClient
+            services.AddSingleton(sp => InitializeCosmosClient(sp));
 
+            // Repositório genérico para o Cosmos DB
+            services.AddScoped<CosmosDbRepository>(provider =>
+            {
+                var cosmosDbService = provider.GetRequiredService<CosmosDbService>();
+                var configuration = provider.GetRequiredService<IConfiguration>();
+
+                string databaseName = "MicroserviceDB"; // Nome do seu banco de dados
+                string containerName = "Items"; // Nome do seu container
+
+                return new CosmosDbRepository(cosmosDbService, databaseName, containerName);
+            });
+
+            // Controllers
             services.AddControllers();
         }
 
@@ -40,15 +55,7 @@ namespace Microservice
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
+            // Configurações de ambiente e middleware
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

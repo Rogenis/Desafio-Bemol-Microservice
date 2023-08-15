@@ -11,10 +11,10 @@ namespace Microservice.Controllers
     [Route("api/[controller]")]
     public class MyController : ControllerBase
     {
-        private readonly CosmosDbRepository<MyDto> _cosmosRepository;
+        private readonly CosmosDbRepository _cosmosRepository;
         private readonly ServiceBusQueue _serviceBusQueue;
 
-        public MyController(CosmosDbRepository<MyDto> cosmosRepository, ServiceBusQueue serviceBusQueue)
+        public MyController(CosmosDbRepository cosmosRepository, ServiceBusQueue serviceBusQueue)
         {
             _cosmosRepository = cosmosRepository;
             _serviceBusQueue = serviceBusQueue;
@@ -26,7 +26,7 @@ namespace Microservice.Controllers
             try
             {
                 // Persistir no Azure Cosmos DB
-                var createdItem = _cosmosRepository.Create(myDto);
+                var createdItem = await _cosmosRepository.CreateAsync(myDto);
 
                 // Enviar mensagem para a fila do Azure Service Bus
                 await _serviceBusQueue.SendMessageAsync(myDto);
