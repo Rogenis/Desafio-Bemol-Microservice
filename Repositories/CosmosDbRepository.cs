@@ -3,10 +3,11 @@ using Microservice.Models;
 using Microservice.Services;
 using Microservice.DTOs;
 using System;
+using System.Threading.Tasks;
 
 namespace Microservice.Repositories
 {
-   public class CosmosDbRepository<TDto> where TDto : IDto, new()
+    public class CosmosDbRepository
     {
         private readonly Container _container;
 
@@ -15,33 +16,47 @@ namespace Microservice.Repositories
             _container = cosmosDbService.GetContainer(databaseName, containerName);
         }
 
-        public TDto Create(TDto dto)
+    public async Task<MyDto> CreateAsync(MyDto dto)
+    {
+        // Mapear o DTO para a entidade
+        var entity = MapDtoToEntity(dto);
+
+        try
         {
-            var entity = MapDtoToEntity(dto);
-            var response = _container.CreateItemAsync(entity).Result;
+            // Criar o item no Cosmos DB
+            var response = await _container.CreateItemAsync(entity);
+
+            // Mapear a resposta para um DTO
             var createdDto = MapEntityToDto(response.Resource);
+
             return createdDto;
         }
-
-        private MyEntity MapDtoToEntity(TDto dto)
+        catch (CosmosException ex)
         {
-            return new MyEntity
-            {
-                Id = Guid.NewGuid().ToString(),
-                Key = dto.Key,
-                AnotherKey = dto.AnotherKey
-            };
+            Console.WriteLine($"Error creating item: {ex}");
+            throw; // Re-throw the exception to be handled at the controller level
         }
+    }
 
-        private TDto MapEntityToDto(MyEntity entity)
+    private MyEntity MapDtoToEntity(MyDto dto)
+    {
+        return new MyEntity
         {
-            return new TDto
-            {
-                Key = entity.Key,
-                AnotherKey = entity.AnotherKey
-            };
-        }
+            id = dto.id,
+            Key = dto.Key,
+            AnotherKey = dto.AnotherKey
+        };
+    }
 
-        // Implementar outros métodos do repositório conforme necessário...
+    private MyDto MapEntityToDto(MyEntity entity)
+    {
+        return new MyDto
+        {
+            id = entity.id,
+            Key = entity.Key,
+            AnotherKey = entity.AnotherKey
+        };
+    }
+
     }
 }
