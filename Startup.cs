@@ -6,7 +6,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Azure.Cosmos;
 using Microservice.Services;
 using Microservice.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Text;
+using Microservice.Filters;
 
 namespace Microservice
 {
@@ -21,6 +25,15 @@ namespace Microservice
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configurar o filtro de autorização da chave de API
+            services.AddScoped<ApiKeyAuthorizationFilter>();
+
+            // Registra o filtro de autorização globalmente
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<ApiKeyAuthorizationFilter>();
+            });
+
             // Configurações de conexão para o Cosmos DB e Service Bus
             services.Configure<ServiceBusQueueSettings>(Configuration.GetSection("ServiceBusQueueSettings"));
 
@@ -61,8 +74,6 @@ namespace Microservice
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
