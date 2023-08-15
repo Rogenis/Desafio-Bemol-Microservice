@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microservice.DTOs;
+using Microservice.Filters;
 using Microservice.Repositories;
 using Microservice.Services;
 using System;
@@ -21,12 +22,14 @@ namespace Microservice.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(ApiKeyAuthorizationFilter))] // Aplicar filtro de autorização da chave de API
         public async Task<IActionResult> CreateItem(MyDto myDto)
         {
             try
             {
                 // Persistir no Azure Cosmos DB
                 var createdItem = await _cosmosRepository.CreateAsync(myDto);
+                Console.WriteLine($"Created item: {createdItem}");
 
                 // Enviar mensagem para a fila do Azure Service Bus
                 await _serviceBusQueue.SendMessageAsync(myDto);
