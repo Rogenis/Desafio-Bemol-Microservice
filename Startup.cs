@@ -34,6 +34,12 @@ namespace Microservice
                 options.Filters.Add<ApiKeyAuthorizationFilter>();
             });
 
+            // Registra o filtro ApiExceptionFilter como um filtro global
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<ApiExceptionFilter>();
+            });
+
             // Configurações de conexão para o Cosmos DB e Service Bus
             services.Configure<ServiceBusQueueSettings>(Configuration.GetSection("ServiceBusQueueSettings"));
 
