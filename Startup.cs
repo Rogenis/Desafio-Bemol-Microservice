@@ -40,6 +40,8 @@ namespace Microservice
                 options.Filters.Add<ApiExceptionFilter>();
             });
 
+            services.AddScoped<LogActionFilter>(); // Registra o filtro de log de ação
+
             // Configurações de conexão para o Cosmos DB e Service Bus
             services.Configure<ServiceBusQueueSettings>(Configuration.GetSection("ServiceBusQueueSettings"));
 
