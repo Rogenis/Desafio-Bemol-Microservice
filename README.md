@@ -55,6 +55,13 @@ Siga estas etapas para configurar o ambiente:
     string containerName = "YourContainerName; // Nome do container
   }
 ```
+4. No pasta Filters, entre no arquivo AuthorizationFilter, e edite a linha 8 para o valor que você deseja para a chave api key.
+   - Essa chave deve validar o token de autenticação enviado no cabeçalho da requisição e retornar um erro 401 caso o token seja inválido ou não seja enviado
+```
+  {
+    _expectedApiKey = "yoursecretkey"; 
+  }
+```
 
 ## 4. Compilação e Execução
 
@@ -71,7 +78,12 @@ Para compilar e executar o microserviço, siga os passos abaixo:
     "AnotherKey": "AnotherValue"
 }
 ```
-5. Ainda na ferramenta, coloque o Heder `Content-Type` com o valor `application/json`.
+5. Ainda na ferramenta, coloque no Header o valor que você definiu para chave api key.
+```
+{
+    "value": "yoursecretkey"
+}
+```
 
 ## 5. Endpoints e APIs
 
@@ -90,6 +102,7 @@ A estrutura do projeto é organizada da seguinte forma:
 - `Program.cs`: Contém o ponto de entrada da aplicação.
 - `Startup.cs`: Contém a configuração da aplicação.
 - `Repositóries`: Contém as classes de acesso ao banco de dados.
+- `Filters`: Contém os filtros AuthorizationFilter, ExceptionFilter e ActionFilter.
 
 ## 7. Fluxos de Trabalho
 *Em construção*
