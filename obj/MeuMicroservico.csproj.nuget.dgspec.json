@@ -46,10 +46,6 @@
               "target": "Package",
               "version": "[7.16.0, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[5.0.13, )"
-            },
             "Microsoft.Azure.Cosmos": {
               "target": "Package",
               "version": "[3.35.3, )"
