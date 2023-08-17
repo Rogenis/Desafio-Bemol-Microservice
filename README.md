@@ -10,12 +10,11 @@ Bem-vindo à documentação oficial do Microserviço. Esta documentação fornec
 4. [Compilação e Execução](#compilação-e-execução)
 5. [Endpoints e APIs](#endpoints-e-apis)
 6. [Estrutura do Código](#estrutura-do-código)
-7. [Fluxos de Trabalho](#fluxos-de-trabalho)
-8. [Integração](#integração)
-9. [Testes](#testes)
-10. [Funcionalidades](#funcionalidades)
-11. [O que pode ser melhorado futuramente](#o-que-pode-ser-melhorado-futuramente)
-12. [Referências](#referências)
+7. [Integração](#integração)
+8. [Testes](#testes)
+9. [Funcionalidades](#funcionalidades)
+10. [O que pode ser melhorado futuramente](#o-que-pode-ser-melhorado-futuramente)
+11. [Referências](#referências)
 
 ## 1. Visão Geral
 
@@ -117,28 +116,25 @@ A estrutura do projeto é organizada da seguinte forma:
 - `Startup.cs`: Contém a configuração da aplicação.
 - `Repositóries`: Contém as classes de acesso ao banco de dados.
 - `Filters`: Contém os filtros AuthorizationFilter, ExceptionFilter e ActionFilter.
-
-## 7. Fluxos de Trabalho
-*Em construção*
-Descrever os fluxos de trabalho típicos suportados pelo microserviço, como criar um item, atualizar um item, etc.
+- `Tests`: Contém os tstes unitários
 
 ## 8. Integração
 
-Sistema se integra com o MicrosserviceWorker via GRPC. *Documentação em construção*
+Sistema se integra com o MicrosserviceWorker via GRPC.
+1. Rode esse projeto com `dotnet run' e verifque se oprojeto está funcionando normalmente a mensagem para a fila e o objeto salvando no banco.
+2. Entre no projeto Desafio-Bemol-Microservice-Worker, e suba a aplicação com `dotne run'. 
 
 ## 9. Testes
 
 1. A pasta `Tests`: Contém as classes de testes unitários.
-2. Navegue até a pagina, e execute o comando `dotnet run` para iniciar os testes unitários.
-
+2. Navegue até a pagina, e execute o comando `dotnet restore` caso não tenha instalado os pacotes, e `dotnet run` para iniciar os testes unitários.
 
 ## 10. Funcionalidades
-- Criar item no banco
-*Em contrução*
-
-## 11. O que pode ser melhorado futuramente:
-- Uso do docker para facilitar a execução do projeto.
-*Em contrução*
+- [ ] Criar item no banco de dados na Azure Cosmos DB
+- [ ] Enviar mensagem par a fila no Azure Service Bus
+- [ ] Testes de exceçoes e filtros
+- [ ] Filtro de Authorization Action Filter e Exception Filter
+- [ ] DTO
 
 ## 12. Referências
 
