@@ -84,12 +84,26 @@ Para compilar e executar o microserviço, siga os passos abaixo:
     "value": "yoursecretkey"
 }
 ```
+6.
+  - [ ] Resultado deve ser o retorno do objeto.
+   
+  - [ ] Verificar se a mensagem foi salva na fila no Azure Service Bus
+        
+![Screenshot from 2023-08-17 16-47-40](https://github.com/Rogenis/Desafio-Bemol-Microservice/assets/49156356/fda3dd8d-9aac-482e-b35a-5bc95b507def)
+
+
+- [ ] Verificar se o objeto foi salvo no banco no Azure Cosmos DB
+
+![Screenshot from 2023-08-17 16-48-43](https://github.com/Rogenis/Desafio-Bemol-Microservice/assets/49156356/ddbc714d-3b72-48bc-8961-eb70fb803f2a)
+
+
 
 ## 5. Endpoints e APIs
 
 O microserviço expõe os seguintes endpoints e APIs:
 
 - `POST /api/MyController`: Cria um novo item.
+- `GET api/my/test-exception`: Testa as exceções e retorna uma mensagem de erro genérica no formato JSON. 
 
 ## 6. Estrutura do Código
 
