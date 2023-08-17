@@ -19,11 +19,11 @@ Bem-vindo à documentação oficial do Microserviço. Esta documentação fornec
 
 ## 1. Visão Geral
 
-O Microserviço é uma aplicação onde foi desenvolvido dois microsserviços em C#, o primeiro recebe um objeto no formato
+O Microserviço é uma aplicação onde foi desenvolvido dois microsserviços em C#, nesse projeto, o primeiro recebe um objeto no formato
 JSON via HTTP POST, armazena esse objeto no banco de dados não relacional Azure Cosmos DB e envia uma mensagem para uma fila do Azure Service Bus com as informações do objeto armazenado.
 
 O segundo microsserviço consome a fila e processaa os objetos do banco a partir dos dados que foram
-recebidos.
+recebidos. Ele pode ser acessado através desse link: https://github.com/Rogenis/Desafio-Bemol-Microservice-worker
 
 ## 2. Pré-requisitos
 
@@ -55,6 +55,13 @@ Siga estas etapas para configurar o ambiente:
     string containerName = "YourContainerName; // Nome do container
   }
 ```
+4. No pasta Filters, entre no arquivo AuthorizationFilter, e edite a linha 8 para o valor que você deseja para a chave api key.
+   - Essa chave deve validar o token de autenticação enviado no cabeçalho da requisição e retornar um erro 401 caso o token seja inválido ou não seja enviado
+```
+  {
+    _expectedApiKey = "yoursecretkey"; 
+  }
+```
 
 ## 4. Compilação e Execução
 
@@ -71,13 +78,32 @@ Para compilar e executar o microserviço, siga os passos abaixo:
     "AnotherKey": "AnotherValue"
 }
 ```
-5. Ainda na ferramenta, coloque o Heder `Content-Type` com o valor `application/json`.
+5. Ainda na ferramenta, coloque no Header o valor que você definiu para chave api key.
+```
+{
+    "value": "yoursecretkey"
+}
+```
+6.
+  - [ ] Resultado deve ser o retorno do objeto.
+   
+  - [ ] Verificar se a mensagem foi salva na fila no Azure Service Bus
+        
+![Screenshot from 2023-08-17 16-47-40](https://github.com/Rogenis/Desafio-Bemol-Microservice/assets/49156356/fda3dd8d-9aac-482e-b35a-5bc95b507def)
+
+
+- [ ] Verificar se o objeto foi salvo no banco no Azure Cosmos DB
+
+![Screenshot from 2023-08-17 16-48-43](https://github.com/Rogenis/Desafio-Bemol-Microservice/assets/49156356/ddbc714d-3b72-48bc-8961-eb70fb803f2a)
+
+
 
 ## 5. Endpoints e APIs
 
 O microserviço expõe os seguintes endpoints e APIs:
 
 - `POST /api/MyController`: Cria um novo item.
+- `GET api/my/test-exception`: Testa as exceções e retorna uma mensagem de erro genérica no formato JSON. 
 
 ## 6. Estrutura do Código
 
@@ -90,6 +116,7 @@ A estrutura do projeto é organizada da seguinte forma:
 - `Program.cs`: Contém o ponto de entrada da aplicação.
 - `Startup.cs`: Contém a configuração da aplicação.
 - `Repositóries`: Contém as classes de acesso ao banco de dados.
+- `Filters`: Contém os filtros AuthorizationFilter, ExceptionFilter e ActionFilter.
 
 ## 7. Fluxos de Trabalho
 *Em construção*
