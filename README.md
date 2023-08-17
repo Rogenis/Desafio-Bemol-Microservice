@@ -19,11 +19,11 @@ Bem-vindo à documentação oficial do Microserviço. Esta documentação fornec
 
 ## 1. Visão Geral
 
-O Microserviço é uma aplicação onde foi desenvolvido dois microsserviços em C#, o primeiro recebe um objeto no formato
+O Microserviço é uma aplicação onde foi desenvolvido dois microsserviços em C#, nesse projeto, o primeiro recebe um objeto no formato
 JSON via HTTP POST, armazena esse objeto no banco de dados não relacional Azure Cosmos DB e envia uma mensagem para uma fila do Azure Service Bus com as informações do objeto armazenado.
 
 O segundo microsserviço consome a fila e processaa os objetos do banco a partir dos dados que foram
-recebidos.
+recebidos. Ele pode ser acessado através desse link: https://github.com/Rogenis/Desafio-Bemol-Microservice-worker
 
 ## 2. Pré-requisitos
 
