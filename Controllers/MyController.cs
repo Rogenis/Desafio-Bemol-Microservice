@@ -22,8 +22,8 @@ namespace Microservice.Controllers
         }
 
         [HttpPost]
-        [TypeFilter(typeof(ApiKeyAuthorizationFilter))] // Aplicar filtro de autorização da chave de API
-        [TypeFilter(typeof(LogActionFilter))] // Aplicar filtro de log de ação a todas as ações
+        [TypeFilter(typeof(ApiKeyAuthorizationFilter))] // Aplica filtro de autorização da chave de API
+        [TypeFilter(typeof(LogActionFilter))] // Aplica filtro de log de ação a todas as ações
         public async Task<IActionResult> CreateItem(MyDto myDto)
         {
             try
@@ -32,7 +32,7 @@ namespace Microservice.Controllers
                 var createdItem = await _cosmosRepository.CreateAsync(myDto);
                 Console.WriteLine($"Created item: {createdItem}");
 
-                // Enviar mensagem para a fila do Azure Service Bus
+                // Envia mensagem para a fila do Azure Service Bus
                 await _serviceBusQueue.SendMessageAsync(myDto);
 
                 return Ok(createdItem);
@@ -42,6 +42,23 @@ namespace Microservice.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        public Task GetAllItems()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task GetItemById(string id)
+        {
+            throw new NotImplementedException();
+        }
+         public Task UpdateItem(string id)
+        {
+            throw new NotImplementedException();
+        }
+         public Task DeleteItem(string id)
+        {
+            throw new NotImplementedException();
+        }
         
         // Testa o filtro de exceção
         // [HttpGet("test-exception")]
@@ -49,7 +66,5 @@ namespace Microservice.Controllers
         //{
            // throw new Exception("Simulating an exception");
         //}
-
-        // ... Implementar outros métodos CRUD e integração com Cosmos DB e Service Bus ...
     }
 }

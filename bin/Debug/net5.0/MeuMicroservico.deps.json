@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "MeuMicroservico/1.0.0": {
         "dependencies": {
+          "Azure.Core": "1.34.0",
           "Azure.Messaging.ServiceBus": "7.16.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.13",
           "Microsoft.Azure.Cosmos": "3.35.3",

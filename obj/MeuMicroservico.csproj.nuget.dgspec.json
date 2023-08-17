@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/rogenis/Desktop/MeuMicroservico/MeuMicroservico.csproj": {}
+    "/home/rogenis/Desktop/Desafio-Bemol-Microservice/MeuMicroservico.csproj": {}
   },
   "projects": {
-    "/home/rogenis/Desktop/MeuMicroservico/MeuMicroservico.csproj": {
+    "/home/rogenis/Desktop/Desafio-Bemol-Microservice/MeuMicroservico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rogenis/Desktop/MeuMicroservico/MeuMicroservico.csproj",
+        "projectUniqueName": "/home/rogenis/Desktop/Desafio-Bemol-Microservice/MeuMicroservico.csproj",
         "projectName": "MeuMicroservico",
-        "projectPath": "/home/rogenis/Desktop/MeuMicroservico/MeuMicroservico.csproj",
+        "projectPath": "/home/rogenis/Desktop/Desafio-Bemol-Microservice/MeuMicroservico.csproj",
         "packagesPath": "/home/rogenis/.nuget/packages/",
-        "outputPath": "/home/rogenis/Desktop/MeuMicroservico/obj/",
+        "outputPath": "/home/rogenis/Desktop/Desafio-Bemol-Microservice/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/rogenis/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Azure.Core": {
+              "target": "Package",
+              "version": "[1.34.0, )"
+            },
             "Azure.Messaging.ServiceBus": {
               "target": "Package",
               "version": "[7.16.0, )"

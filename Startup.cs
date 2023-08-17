@@ -2,14 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Azure.Cosmos;
 using Microservice.Services;
 using Microservice.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Text;
 using Microservice.Filters;
 
 namespace Microservice
@@ -25,7 +21,7 @@ namespace Microservice
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Configurar o filtro de autorização da chave de API
+            // Configura o filtro de autorização da chave de API
             services.AddScoped<ApiKeyAuthorizationFilter>();
 
             // Registra o filtro de autorização globalmente
@@ -58,8 +54,8 @@ namespace Microservice
                 var cosmosDbService = provider.GetRequiredService<CosmosDbService>();
                 var configuration = provider.GetRequiredService<IConfiguration>();
 
-                string databaseName = "MicroserviceDB"; // Nome do seu banco de dados
-                string containerName = "Items"; // Nome do seu container
+                string databaseName = "MicroserviceDB"; // Nome do banco de dados
+                string containerName = "Items"; // Nome do container
 
                 return new CosmosDbRepository(cosmosDbService, databaseName, containerName);
             });

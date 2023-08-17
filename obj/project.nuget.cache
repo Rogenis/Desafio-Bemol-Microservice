@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p7ATnS4AorRup5+UdpXMqgXblFDrj9dElmWR/3+4LCfidyZz2GKkEj9sI2rLfmp4toIs8iviYwzlDPKrmR0PIg==",
+  "dgSpecHash": "JiX4KNi4BsyMo3Cca8ybUjjhzQ2q+7KdrNCNfSSWh03IbdTQ3QVK54YJ8shYmYP6emTCJZgw+rH2Y2Ea+HA/7A==",
   "success": true,
-  "projectFilePath": "/home/rogenis/Desktop/MeuMicroservico/MeuMicroservico.csproj",
+  "projectFilePath": "/home/rogenis/Desktop/Desafio-Bemol-Microservice/MeuMicroservico.csproj",
   "expectedPackageFiles": [
     "/home/rogenis/.nuget/packages/azure.core/1.34.0/azure.core.1.34.0.nupkg.sha512",
     "/home/rogenis/.nuget/packages/azure.core.amqp/1.3.0/azure.core.amqp.1.3.0.nupkg.sha512",
