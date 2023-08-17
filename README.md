@@ -13,8 +13,7 @@ Bem-vindo à documentação oficial do Microserviço. Esta documentação fornec
 7. [Integração](#integração)
 8. [Testes](#testes)
 9. [Funcionalidades](#funcionalidades)
-10. [O que pode ser melhorado futuramente](#o-que-pode-ser-melhorado-futuramente)
-11. [Referências](#referências)
+10. [Referências](#referências)
 
 ## 1. Visão Geral
 
@@ -118,25 +117,25 @@ A estrutura do projeto é organizada da seguinte forma:
 - `Filters`: Contém os filtros AuthorizationFilter, ExceptionFilter e ActionFilter.
 - `Tests`: Contém os tstes unitários
 
-## 8. Integração
+## 7. Integração
 
 Sistema se integra com o MicrosserviceWorker via GRPC.
 1. Rode esse projeto com `dotnet run' e verifque se oprojeto está funcionando normalmente a mensagem para a fila e o objeto salvando no banco.
 2. Entre no projeto Desafio-Bemol-Microservice-Worker, e suba a aplicação com `dotne run'. 
 
-## 9. Testes
+## 8. Testes
 
 1. A pasta `Tests`: Contém as classes de testes unitários.
 2. Navegue até a pagina, e execute o comando `dotnet restore` caso não tenha instalado os pacotes, e `dotnet run` para iniciar os testes unitários.
 
-## 10. Funcionalidades
+## 9. Funcionalidades
 - [ ] Criar item no banco de dados na Azure Cosmos DB
 - [ ] Enviar mensagem par a fila no Azure Service Bus
 - [ ] Testes de exceçoes e filtros
 - [ ] Filtro de Authorization Action Filter e Exception Filter
 - [ ] DTO
 
-## 12. Referências
+## 10. Referências
 
 - Documentação do .NET SDK: [link](https://docs.microsoft.com/dotnet/core/sdk)
 - Documentação do Azure Cosmos DB: [link](https://docs.microsoft.com/azure/cosmos-db/)
